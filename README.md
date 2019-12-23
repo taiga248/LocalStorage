@@ -9,7 +9,7 @@ $ open index.html
 ```
 
 Please type this key.
-- Macintosh: command + shift + i 
+- Macintosh: command + option + i 
 - Windows: F12
 
 If you want to see the behavior of the data, 
