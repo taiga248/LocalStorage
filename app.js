@@ -18,8 +18,7 @@ function load() {
     let output = document.getElementById("output")
     let li = []
     let data = []
-    let L = localStorage.length
-    for(let i=0; i<L; i++){
+    for(let i=0; i<localStorage.length; i++){
       li[i] = document.createElement("li")
       data[i] = localStorage.getItem(i)
       li[i].textContent = " key : "+i+", value : "+data[i]
@@ -30,6 +29,13 @@ function load() {
   }
 }
 
+function select() {
+  console.log("Hello")//なんで出力されないんすか！！！意味わからん！！
+
+  //let select = document.getElementById("select")
+  //let select_num = select.value
+  //console.log(select_num)
+}
 
 //削除したい時はコメントアウトを無効にする
 //localStorage.clear()
