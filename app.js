@@ -29,8 +29,8 @@ function load() {
   }
 }
 
-function select() {
-  console.log("Hello")//なんで出力されないんすか！！！意味わからん！！
+function choise() {
+  console.log("Hello")
 
   //let select = document.getElementById("select")
   //let select_num = select.value
