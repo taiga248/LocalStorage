@@ -15,27 +15,47 @@ function save() {
 
 function load() {
   if(localStorage.getItem(0)) {
-    let output = document.getElementById("output")
-    let li = []
-    let data = []
-    for(let i=0; i<localStorage.length; i++){
-      li[i] = document.createElement("li")
-      data[i] = localStorage.getItem(i)
-      li[i].textContent = " key : "+i+", value : "+data[i]
-      output.appendChild(li[i])
-    }
+    let load_data = document.getElementById("load_data")
+    append(load_data)
   }else{
-    alert("LocalStorageにデータがありません")
+    error_mess()
   }
 }
 
 function choise() {
-  console.log("Hello")
+  if(localStorage.getItem(0)){
+    let choise = document.getElementById("choise")
+    let choise_data = document.getElementById("choise_data")
+    let choise_num = choise.value
+    if(localStorage.length >= choise_num && localStorage){
+      for(let i=0; i<localStorage.length; i++){
+        let data_num = localStorage.key(i)
+        if(data_num == choise_num){
+          let data = localStorage.getItem(data_num)
+          console.log(data)
+          append(choise_data)//TODO: appendを選択関数でも使えるように
+        }
+      }
+    }
+  }else{
+    error_mess()
+  }
+}
 
-  //let select = document.getElementById("select")
-  //let select_num = select.value
-  //console.log(select_num)
+function append(output){
+  let li = []
+  let data = []
+  for(let i=0; i<localStorage.length; i++){
+    li[i] = document.createElement("li")
+    data[i] = localStorage.getItem(i)
+    li[i].textContent = " key : "+i+", value : "+data[i]
+    output.appendChild(li[i])
+  }
+}
+
+function error_mess(){
+  alert("LocalStorageにデータがありません")
 }
 
 //削除したい時はコメントアウトを無効にする
-//localStorage.clear()
+localStorage.clear()
