@@ -5,7 +5,6 @@ function save() {
   if(input.value){
     mydata.push(input.value)
     let storage_id = mydata.length - 1
-
     localStorage.setItem(storage_id, mydata[storage_id])
     console.log("Save data = " + mydata[storage_id])
   }else{
@@ -16,7 +15,7 @@ function save() {
 function load() {
   if(localStorage.getItem(0)) {
     let load_data = document.getElementById("load_data")
-    append(load_data)
+    append(load_data, null)
   }else{
     error_mess()
   }
@@ -30,10 +29,8 @@ function choise() {
     if(localStorage.length >= choise_num && localStorage){
       for(let i=0; i<localStorage.length; i++){
         let data_num = localStorage.key(i)
-        if(data_num == choise_num){
-          let data = localStorage.getItem(data_num)
-          console.log(data)
-          append(choise_data)//TODO: appendを選択関数でも使えるように
+        if(data_num === choise_num){
+          append(choise_data, choise_num)
         }
       }
     }
@@ -42,14 +39,21 @@ function choise() {
   }
 }
 
-function append(output){
+function append(output, num){
   let li = []
   let data = []
-  for(let i=0; i<localStorage.length; i++){
-    li[i] = document.createElement("li")
-    data[i] = localStorage.getItem(i)
-    li[i].textContent = " key : "+i+", value : "+data[i]
-    output.appendChild(li[i])
+  if(num === null){
+    for(let i=0; i<localStorage.length; i++){
+      li[i] = document.createElement("li")
+      data[i] = localStorage.getItem(i)
+      li[i].textContent = " key : "+i+", value : "+data[i]
+      output.appendChild(li[i])
+    }
+  }else{
+    li[0] = document.createElement("li")
+    data[0] = localStorage.getItem(num)
+    li[0].textContent = " key : "+num+", value : "+data[0]
+    output.appendChild(li[0])
   }
 }
 
