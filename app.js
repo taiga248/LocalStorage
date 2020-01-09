@@ -28,8 +28,7 @@ function choise() {
     let choise_num = choise.value
     if(localStorage.length >= choise_num && localStorage){
       for(let i=0; i<localStorage.length; i++){
-        let data_num = localStorage.key(i)
-        if(data_num === choise_num){
+        if(localStorage.key(i) === choise_num){
           append(choise_data, choise_num)
         }
       }
@@ -40,9 +39,9 @@ function choise() {
 }
 
 function append(output, num){
-  let li = []
-  let data = []
   if(num === null){
+    let li = []
+    let data = []
     for(let i=0; i<localStorage.length; i++){
       li[i] = document.createElement("li")
       data[i] = localStorage.getItem(i)
@@ -50,10 +49,10 @@ function append(output, num){
       output.appendChild(li[i])
     }
   }else{
-    li[0] = document.createElement("li")
-    data[0] = localStorage.getItem(num)
-    li[0].textContent = " key : "+num+", value : "+data[0]
-    output.appendChild(li[0])
+    let li = document.createElement("li")
+    let data = localStorage.getItem(num)
+    li.textContent = " key : "+num+", value : "+data
+    output.appendChild(li)
   }
 }
 
@@ -61,5 +60,5 @@ function error_mess(){
   alert("LocalStorageにデータがありません")
 }
 
-//削除したい時はコメントアウトを無効にする
+//LocalStorageを残して置きたい時はコメントアウト
 localStorage.clear()
